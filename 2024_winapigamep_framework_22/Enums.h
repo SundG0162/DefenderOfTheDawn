@@ -1,0 +1,51 @@
+#pragma once
+enum class LAYER
+{
+	DEFAULT,
+	BACKGROUND,
+	PLAYER,
+	PROJECTILE,
+	ENEMY,
+	UI,
+	EFFECT,
+	END
+};
+
+enum class PEN_TYPE
+{
+	HOLLOW, RED, GREEN,
+	BLUE, YELLOW, END
+};
+
+enum class BRUSH_TYPE
+{
+	HOLLOW, RED, GREEN,
+	BLUE, YELLOW, WHITE, BLACK, END
+};
+
+
+enum class EVENT_TYPE
+{
+	CREATE_OBJECT,
+	DELETE_OBJECT,
+	EXCLUDE_OBJECT,
+	CREATE_WINDOW,
+	DELETE_WINDOW,
+	EXCLUDE_WINDOW,
+	SCENE_CHANGE,
+	END,
+};
+
+enum class WINDOW_TYPE
+{
+	NEW,
+	COPY
+};
+
+
+enum class PLAYER_ITEM
+{
+	CAMERA = 0,
+	TORCH,
+	UPGRADE
+};
