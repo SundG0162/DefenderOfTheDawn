@@ -15,12 +15,12 @@ Window::Window(const Vector2& position, const Vector2& size, const wstring& name
 	, _size(size)
 	, _name(name)
 {
-	WNDCLASS wc = { 0 }; // ±¸Á¶Ã¼¸¦ 0À¸·Î ÃÊ±âÈ­
+	WNDCLASS wc = { 0 }; // ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
 
-	wc.lpfnWndProc = Window::wndProc; // À©µµ¿ì ÇÁ·Î½ÃÀú ÇÔ¼ö ¼³Á¤
-	wc.hInstance = GET_SINGLETON(Core)->getHInstance(); // ÀÎ½ºÅÏ½º ÇÚµé ¼³Á¤
-	wc.lpszClassName = L"¾öÁØ½Ä"; // Å¬·¡½º ÀÌ¸§ ¼³Á¤
-	wc.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1); // ¹è°æ»ö ¼³Á¤
+	wc.lpfnWndProc = Window::wndProc; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ ï¿½ï¿½ï¿½ï¿½
+	wc.hInstance = GET_SINGLETON(Core)->getHInstance(); // ï¿½Î½ï¿½ï¿½Ï½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½
+	wc.lpszClassName = L"Window"; // Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½
+	wc.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
 	RegisterClass(&wc);
 
@@ -35,7 +35,7 @@ Window::Window(const Vector2& position, const Vector2& size, const wstring& name
 
 	_hWnd = CreateWindowEx(
 		0,
-		L"¾öÁØ½Ä",
+		L"Window",
 		name.c_str(),
 		WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU,
 		fixedPos.x, fixedPos.y,
@@ -99,7 +99,7 @@ LRESULT Window::handleMessage(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
 	break;
 	case WM_MOVING:
 	{
-		RECT* rect = (RECT*)lParam;  // µå·¡±× ÁßÀÎ Ã¢ÀÇ »õ À§Ä¡
+		RECT* rect = (RECT*)lParam;  // ï¿½å·¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã¢ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Ä¡
 		int posX = rect->left + (rect->right - rect->left) / 2;
 		int posY = rect->top + (rect->bottom - rect->top) / 2;
 		Vector2 currentPosition = { (float)posX, (float)posY };
@@ -193,12 +193,12 @@ void Window::openWindow()
 	GET_SINGLETON(Core)->OnMessageProcessEvent += [this]()
 		{
 			GET_SINGLETON(Core)->OnMessageProcessEvent -= [this]() {};
-			WNDCLASS wc = { 0 }; // ±¸Á¶Ã¼¸¦ 0À¸·Î ÃÊ±âÈ­
+			WNDCLASS wc = { 0 }; // ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
 
-			wc.lpfnWndProc = Window::wndProc; // À©µµ¿ì ÇÁ·Î½ÃÀú ÇÔ¼ö ¼³Á¤
-			wc.hInstance = GET_SINGLETON(Core)->getHInstance(); // ÀÎ½ºÅÏ½º ÇÚµé ¼³Á¤
-			wc.lpszClassName = L"¾öÁØ½Ä"; // Å¬·¡½º ÀÌ¸§ ¼³Á¤
-			wc.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1); // ¹è°æ»ö ¼³Á¤
+			wc.lpfnWndProc = Window::wndProc; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ ï¿½ï¿½ï¿½ï¿½
+			wc.hInstance = GET_SINGLETON(Core)->getHInstance(); // ï¿½Î½ï¿½ï¿½Ï½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½
+			wc.lpszClassName = L"Window"; // Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½
+			wc.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
 			RegisterClass(&wc);
 
@@ -206,7 +206,7 @@ void Window::openWindow()
 
 			_hWnd = CreateWindowEx(
 				0,
-				L"¾öÁØ½Ä",
+				L"Window",
 				_name.c_str(),
 				WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU,
 				fixedPos.x, fixedPos.y,
